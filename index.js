@@ -14,9 +14,9 @@ const app = require('./app')
 
 require("dotenv").config();
 
-const PORT = process.env.PORT||3000;
+const PORT = process.env.PORT;
 
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING||"mongodb+srv://kanhiya94:SqXIdmeH9HU8QBYB@cluster0.52c8x.mongodb.net/instagram?retryWrites=true&w=majority", {}).then(() => {
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {}).then(() => {
     console.log("Database Connected Successfully");
     app.listen(PORT, () => {
         console.log(`Server Stared at ${PORT}`)
