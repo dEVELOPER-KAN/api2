@@ -2,21 +2,21 @@ const mongoose = require('mongoose');
 const winston = require('winston');
 const app = require('./app')
 
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    defaultMeta: { service: 'user-service' },
-    transports: [
-      new winston.transports.File({ filename: 'error.log', level: 'error' }),
-      new winston.transports.File({ filename: 'combined.log' }),
-    ],
-  });
+// const logger = winston.createLogger({
+//     level: 'info',
+//     format: winston.format.json(),
+//     defaultMeta: { service: 'user-service' },
+//     transports: [
+//       new winston.transports.File({ filename: 'error.log', level: 'error' }),
+//       new winston.transports.File({ filename: 'combined.log' }),
+//     ],
+//   });
 
 require("dotenv").config();
 
 const PORT = process.env.PORT||3000;
 
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {}).then(() => {
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING||"mongodb+srv://kanhiya94:SqXIdmeH9HU8QBYB@cluster0.52c8x.mongodb.net/instagram?retryWrites=true&w=majority", {}).then(() => {
     console.log("Database Connected Successfully");
     app.listen(PORT, () => {
         console.log(`Server Stared at ${PORT}`)
