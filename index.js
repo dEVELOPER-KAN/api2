@@ -14,7 +14,7 @@ const logger = winston.createLogger({
 
 require("dotenv").config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT||3000;
 
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {}).then(() => {
     console.log("Database Connected Successfully");
