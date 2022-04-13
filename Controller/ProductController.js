@@ -23,7 +23,7 @@ exports.save = async (request, response, next) => {
         "status": "success",
         "data": data
     })
-    next();
+    next()
 }
 
 exports.delete = async (request, response, next) => {
