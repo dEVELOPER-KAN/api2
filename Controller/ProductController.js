@@ -11,6 +11,7 @@ exports.retrieve = async (request, response, next) => {
 }
 
 exports.save = async (request, response, next) => {
+    try{
     const { title, description, vendor, variants } = request.body;
     const product = await new Product({
         'title': title,
@@ -24,6 +25,13 @@ exports.save = async (request, response, next) => {
         "data": data
     })
     next()
+}
+catch(err){
+    response.status(401).json({
+        "status": "success",
+        "data": err
+    })
+}
 }
 
 exports.delete = async (request, response, next) => {
